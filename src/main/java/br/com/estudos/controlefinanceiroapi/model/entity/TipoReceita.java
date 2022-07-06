@@ -1,14 +1,15 @@
 package br.com.estudos.controlefinanceiroapi.model.entity;
 
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -20,20 +21,24 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Receita implements Serializable {
+public class TipoReceita implements Serializable {	
 	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String descricao;
-	private Double valor;
-	private LocalDate dtRecebimento;
-	private Boolean isRecebido;
 	
-	@ManyToOne
-	@JoinColumn(name = "id_tipo_receita")
-	private TipoReceita tipoReceita;
+	@JsonIgnore
+	@OneToMany(mappedBy = "tipoReceita")
+	private List<Receita> receitas;
+	
+
+
+	
+	
+	
+	
 	
 
 }
