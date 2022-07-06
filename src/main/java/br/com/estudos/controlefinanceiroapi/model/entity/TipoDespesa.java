@@ -32,6 +32,6 @@ public class TipoDespesa implements Serializable {
 
 	@JsonIgnore
 	@OneToMany(mappedBy = "tipoDespesa")
-	private List<Despesa> receitas;
+	private List<Despesa> despesas;
 
 }
