@@ -30,7 +30,7 @@ public class ControllerExceptionHandler extends ResponseEntityExceptionHandler {
 	}
 
 	@ExceptionHandler(NegocioException.class)
-	public ResponseEntity<Object> handleNegocioExceptionException(RecursoNaoEncontradoException ex,
+	public ResponseEntity<Object> handleNegocioExceptionException(NegocioException ex,
 			WebRequest request) {
 		var headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_JSON);
