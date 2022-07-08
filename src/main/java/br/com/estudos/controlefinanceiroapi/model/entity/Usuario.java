@@ -13,6 +13,7 @@ import javax.persistence.OneToMany;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -20,6 +21,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class Usuario implements Serializable {
@@ -39,14 +41,13 @@ public class Usuario implements Serializable {
 	@JsonIgnore
 	@OneToMany(mappedBy = "usuario")
 	private List<TipoDespesa> tipoDespesas;
-	
+
 	@JsonIgnore
 	@OneToMany(mappedBy = "usuario")
 	private List<Receita> receitas;
-	
+
 	@JsonIgnore
 	@OneToMany(mappedBy = "usuario")
 	private List<Despesa> despesas;
-	
 
 }
