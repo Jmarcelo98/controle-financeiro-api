@@ -1,14 +1,13 @@
 package br.com.estudos.controlefinanceiroapi.model.entity;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -23,29 +22,31 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class TipoReceita implements Serializable {	
+public class Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	private String descricao;
+	private String nomeCompleto;
+	private String cpf;
+	private LocalDate dtNascimento;
+
+	@JsonIgnore
+	@OneToMany(mappedBy = "usuario")
+	private List<TipoReceita> tipoReceitas;
+
+	@JsonIgnore
+	@OneToMany(mappedBy = "usuario")
+	private List<TipoDespesa> tipoDespesas;
 	
 	@JsonIgnore
-	@OneToMany(mappedBy = "tipoReceita")
+	@OneToMany(mappedBy = "usuario")
 	private List<Receita> receitas;
 	
-	@ManyToOne
-	@JoinColumn(name = "id_usuario")
-	private Usuario usuario;
-	
-	
-
-
-	
-	
-	
-	
+	@JsonIgnore
+	@OneToMany(mappedBy = "usuario")
+	private List<Despesa> despesas;
 	
 
 }
