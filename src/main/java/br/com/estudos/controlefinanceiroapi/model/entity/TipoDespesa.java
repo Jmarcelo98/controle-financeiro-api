@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -25,6 +27,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Table(uniqueConstraints = @UniqueConstraint(name = "UniqueDescricaoAndUsuario", columnNames = { "descricao","id_usuario" }))
 public class TipoDespesa implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -37,10 +40,9 @@ public class TipoDespesa implements Serializable {
 	@JsonIgnore
 	@OneToMany(mappedBy = "tipoDespesa")
 	private List<Despesa> despesas;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "id_usuario")
 	private Usuario usuario;
-	
 
 }
