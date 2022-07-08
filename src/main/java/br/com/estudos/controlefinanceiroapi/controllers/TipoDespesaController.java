@@ -18,8 +18,8 @@ public class TipoDespesaController {
 	private final TipoDespesaService tipoDespesaService;
 
 	@PostMapping
-	ResponseEntity<Void> incluir(@RequestBody TipoDespesa despesa) {
-		tipoDespesaService.incluir(despesa);
+	ResponseEntity<Void> incluir(@RequestBody TipoDespesa tipoDespesa) {
+		tipoDespesaService.incluir(tipoDespesa);
 		return ResponseEntity.ok().build();
 	}
 
