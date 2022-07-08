@@ -38,5 +38,9 @@ public class Despesa implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "id_tipo_despesa")
 	private TipoDespesa tipoDespesa;
+	
+	@ManyToOne
+	@JoinColumn(name = "id_usuario")
+	private Usuario usuario;
 
 }

@@ -33,7 +33,13 @@ public class Receita implements Serializable {
 	
 	@ManyToOne
 	@JoinColumn(name = "id_tipo_receita")
-	private TipoReceita tipoReceita;
+	private TipoReceita tipoReceita;	
 	
+	@ManyToOne
+	@JoinColumn(name = "id_usuario")
+	private Usuario usuario;
+	
+	
+
 
 }
