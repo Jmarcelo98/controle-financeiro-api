@@ -35,7 +35,7 @@ public class Despesa implements Serializable {
 
 	private LocalDate dtRecebimento;
 
-	private Boolean isRecebido;
+	private Boolean isEfetuado;
 
 	@ManyToOne
 	@JoinColumn(name = "id_tipo_despesa")
