@@ -31,7 +31,7 @@ public class Receita implements Serializable {
 	private String descricao;
 	private Double valor;
 	private LocalDate dtRecebimento;
-	private Boolean isRecebido;
+	private Boolean isEfetuado;
 	
 	@ManyToOne
 	@JoinColumn(name = "id_tipo_receita")
