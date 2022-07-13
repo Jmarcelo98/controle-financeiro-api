@@ -25,8 +25,8 @@ public class DespesaDTO {
 
 	private Boolean isEfetuado;
 
-	private UsuarioDTO usuario;
-
-	private TipoDespesaDTO tipoDespesa;
+//	private UsuarioDTO usuario;
+//
+//	private TipoDespesaDTO tipoDespesa;
 
 }
