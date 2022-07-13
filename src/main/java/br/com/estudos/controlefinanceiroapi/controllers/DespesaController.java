@@ -2,6 +2,7 @@ package br.com.estudos.controlefinanceiroapi.controllers;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,4 +24,9 @@ public class DespesaController {
 		return ResponseEntity.ok().build();
 	}
 
+	@PutMapping
+	public ResponseEntity<Void> atualizar(@RequestBody DespesaDTO despesaDTO) {
+		despesaService.atualizar(despesaDTO);
+		return ResponseEntity.ok().build();
+	}
 }
