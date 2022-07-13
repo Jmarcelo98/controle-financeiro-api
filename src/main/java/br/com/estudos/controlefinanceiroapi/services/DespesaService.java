@@ -1,13 +1,10 @@
 package br.com.estudos.controlefinanceiroapi.services;
 
-import java.time.LocalDate;
-
 import org.springframework.stereotype.Service;
 
-import br.com.estudos.controlefinanceiroapi.model.entity.Despesa;
+import br.com.estudos.controlefinanceiroapi.mappers.DespesaMapper;
+import br.com.estudos.controlefinanceiroapi.model.dtos.DespesaDTO;
 import br.com.estudos.controlefinanceiroapi.repositories.DespesaRepository;
-import br.com.estudos.controlefinanceiroapi.utils.DataUtils;
-import br.com.estudos.controlefinanceiroapi.utils.StringFormatoUtil;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -16,16 +13,11 @@ public class DespesaService {
 
 	private final DespesaRepository despesaRepository;
 
-	public void incluir(Despesa despesa) {
+	public void incluir(DespesaDTO despesaDTO) {
 
-		despesa.setIsEfetuado(dataMenorQueDataAtual(despesa.getDtRecebimento()));
+		var despesa = DespesaMapper.INSTANCE.DTOToEntity(despesaDTO);
 
-		despesa.setDescricao(StringFormatoUtil.emMaiusculo(despesa.getDescricao()));
 		despesaRepository.save(despesa);
-	}
-
-	private Boolean dataMenorQueDataAtual(LocalDate data) {
-		return DataUtils.dataMenorQueDataAtual(data);
 	}
 
 }
