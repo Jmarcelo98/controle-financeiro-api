@@ -9,7 +9,6 @@ import br.com.estudos.controlefinanceiroapi.mappers.TipoReceitaMapper;
 import br.com.estudos.controlefinanceiroapi.model.dtos.TipoReceitaDTO;
 import br.com.estudos.controlefinanceiroapi.model.entity.TipoReceita;
 import br.com.estudos.controlefinanceiroapi.repositories.TipoReceitaRepository;
-import br.com.estudos.controlefinanceiroapi.utils.StringFormatoUtil;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -21,8 +20,6 @@ public class TipoReceitaService {
 	private final UsuarioService usuarioService;
 
 	public void incluir(TipoReceita tipoReceita) {
-
-		tipoReceita.setDescricao(StringFormatoUtil.emMaiusculo(tipoReceita.getDescricao()));
 
 		if (existeTipoReceita(tipoReceita)) {
 			throw new NegocioException("Tipo de receita já cadastrada");
@@ -41,7 +38,8 @@ public class TipoReceitaService {
 	// private metodos
 
 	private boolean existeTipoReceita(TipoReceita tipoReceita) {
-		return tipoReceitaRepository.existsByDescricaoAndUsuario(tipoReceita.getDescricao(), tipoReceita.getUsuario());
+		return tipoReceitaRepository.existsByDescricaoIgnoreCaseAndUsuario(tipoReceita.getDescricao(),
+				tipoReceita.getUsuario());
 	}
 
 }

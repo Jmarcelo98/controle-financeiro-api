@@ -7,6 +7,6 @@ import br.com.estudos.controlefinanceiroapi.model.entity.Usuario;
 
 public interface TipoDespesaRepository extends JpaRepository<TipoDespesa, Integer> {
 	
-	Boolean existsByDescricaoAndUsuario(String descricao, Usuario usuario);
+	Boolean existsByDescricaoIgnoreCaseAndUsuario(String descricao, Usuario usuario);
 
 }

@@ -9,7 +9,7 @@ import br.com.estudos.controlefinanceiroapi.model.entity.Usuario;
 
 public interface TipoReceitaRepository extends JpaRepository<TipoReceita, Integer> {
 	
-	Boolean existsByDescricaoAndUsuario(String descricao, Usuario usuario);
+	Boolean existsByDescricaoIgnoreCaseAndUsuario(String descricao, Usuario usuario);
 	
 	List<TipoReceita> findAllByUsuario(Usuario usuario);
  
