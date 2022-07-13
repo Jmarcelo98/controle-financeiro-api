@@ -2,8 +2,6 @@ package br.com.estudos.controlefinanceiroapi.model.dtos;
 
 import java.time.LocalDate;
 
-import javax.persistence.Entity;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
