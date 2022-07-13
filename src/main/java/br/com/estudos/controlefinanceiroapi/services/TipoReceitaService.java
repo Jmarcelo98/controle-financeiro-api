@@ -1,12 +1,8 @@
 package br.com.estudos.controlefinanceiroapi.services;
 
-import java.util.List;
-
 import org.springframework.stereotype.Service;
 
 import br.com.estudos.controlefinanceiroapi.handlers.NegocioException;
-import br.com.estudos.controlefinanceiroapi.mappers.TipoReceitaMapper;
-import br.com.estudos.controlefinanceiroapi.model.dtos.TipoReceitaDTO;
 import br.com.estudos.controlefinanceiroapi.model.entity.TipoReceita;
 import br.com.estudos.controlefinanceiroapi.repositories.TipoReceitaRepository;
 import lombok.RequiredArgsConstructor;
@@ -17,8 +13,6 @@ public class TipoReceitaService {
 
 	private final TipoReceitaRepository tipoReceitaRepository;
 
-	private final UsuarioService usuarioService;
-
 	public void incluir(TipoReceita tipoReceita) {
 
 		if (existeTipoReceita(tipoReceita)) {
@@ -26,13 +20,6 @@ public class TipoReceitaService {
 		}
 
 		tipoReceitaRepository.save(tipoReceita);
-	}
-
-	public List<TipoReceitaDTO> buscarTodosPeloIdUsuario(Integer id) {
-
-		return TipoReceitaMapper.INSTANCE
-				.listaEntityToListaDTO(tipoReceitaRepository.findAllByUsuario(usuarioService.buscarPeloId(id)));
-
 	}
 
 	// private metodos
