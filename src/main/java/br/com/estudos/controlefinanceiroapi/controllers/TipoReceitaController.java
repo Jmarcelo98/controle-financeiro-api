@@ -28,8 +28,8 @@ public class TipoReceitaController {
 	}
 
 	@GetMapping
-	private ResponseEntity<List<TipoReceitaDTO>> buscarTodosPeloId(Integer id) {
-		return ResponseEntity.ok(tipoReceitaService.buscarTodosPeloId(id));
+	private ResponseEntity<List<TipoReceitaDTO>> buscarTodosPeloIdUsuario(Integer id) {
+		return ResponseEntity.ok(tipoReceitaService.buscarTodosPeloIdUsuario(id));
 	}
 
 }

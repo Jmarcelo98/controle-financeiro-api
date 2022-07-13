@@ -28,7 +28,7 @@ public class TipoReceitaService {
 		tipoReceitaRepository.save(tipoReceita);
 	}
 
-	public List<TipoReceitaDTO> buscarTodosPeloId(Integer id) {
+	public List<TipoReceitaDTO> buscarTodosPeloIdUsuario(Integer id) {
 
 		return TipoReceitaMapper.INSTANCE
 				.listaEntityToListaDTO(tipoReceitaRepository.findAllByUsuario(usuarioService.buscarPeloId(id)));
