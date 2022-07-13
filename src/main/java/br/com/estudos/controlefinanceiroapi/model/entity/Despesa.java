@@ -1,7 +1,6 @@
 package br.com.estudos.controlefinanceiroapi.model.entity;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -36,9 +35,6 @@ public class Despesa extends GenericEntity implements Serializable {
 
 	@Column(nullable = false)
 	private Double valor;
-
-	@Column(nullable = false)
-	private LocalDate dtRecebimento;
 
 	@ManyToOne
 	@JoinColumn(name = "id_tipo_despesa")
