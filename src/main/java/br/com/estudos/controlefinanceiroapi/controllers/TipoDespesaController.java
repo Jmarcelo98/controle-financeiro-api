@@ -3,6 +3,7 @@ package br.com.estudos.controlefinanceiroapi.controllers;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,20 +23,26 @@ public class TipoDespesaController {
 
 	private final TipoDespesaService tipoDespesaService;
 
+	@GetMapping
+	ResponseEntity<List<TipoDespesaDTO>> buscarTodosPeloIdUsuario(Integer id) {
+		return ResponseEntity.ok(tipoDespesaService.buscarTodosPeloIdUsuario(id));
+	}
+
 	@PostMapping
 	ResponseEntity<Void> incluir(@RequestBody TipoDespesa tipoDespesa) {
 		tipoDespesaService.incluir(tipoDespesa);
 		return ResponseEntity.ok().build();
 	}
 
-	@GetMapping
-	ResponseEntity<List<TipoDespesaDTO>> buscarTodosPeloIdUsuario(Integer id) {
-		return ResponseEntity.ok(tipoDespesaService.buscarTodosPeloIdUsuario(id));
-	}
-
 	@PatchMapping
 	ResponseEntity<Void> atualizar(@RequestBody TipoDespesaDTO tipoDespesaDTO) {
 		tipoDespesaService.atualizar(tipoDespesaDTO);
+		return ResponseEntity.ok().build();
+	}
+
+	@DeleteMapping
+	ResponseEntity<Void> deletar(Integer id) {
+		tipoDespesaService.deletar(id);
 		return ResponseEntity.ok().build();
 	}
 
