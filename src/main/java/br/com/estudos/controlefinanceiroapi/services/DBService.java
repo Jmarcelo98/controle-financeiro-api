@@ -106,11 +106,16 @@ public class DBService {
 
 		var despesa4 = Despesa.builder().id(null).descricao("CIMEMA").dtRecebimento(date11).isEfetuado(true)
 				.valor(70.50).tipoDespesa(tipoDespesa4).usuario(tipoDespesa4.getUsuario()).build();
+		
+		var despesa5 = Despesa.builder().id(null).descricao("BANHO").dtRecebimento(date8).isEfetuado(true)
+				.valor(90.0).tipoDespesa(tipoDespesa1).usuario(tipoDespesa1.getUsuario()).build();
 
-		var despesa5 = Despesa.builder().id(null).descricao("UBER PARA ASA NORTE").dtRecebimento(date12)
+		var despesa6 = Despesa.builder().id(null).descricao("UBER PARA ASA NORTE").dtRecebimento(date12)
 				.isEfetuado(true).valor(120.39).tipoDespesa(tipoDespesa5).usuario(tipoDespesa5.getUsuario()).build();
+		
+		
 
-		despesaRepository.saveAll(Arrays.asList(despesa1, despesa2, despesa3, despesa4, despesa5));
+		despesaRepository.saveAll(Arrays.asList(despesa1, despesa2, despesa3, despesa4, despesa5, despesa6));
 
 	}
 }
