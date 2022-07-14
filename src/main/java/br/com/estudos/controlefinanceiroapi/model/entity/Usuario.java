@@ -33,6 +33,7 @@ public class Usuario implements Serializable {
 	private String nomeCompleto;
 	private String cpf;
 	private LocalDate dtNascimento;
+	private byte[] foto;
 
 	@JsonIgnore
 	@OneToMany(mappedBy = "usuario")
