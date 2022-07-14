@@ -37,7 +37,7 @@ public class Despesa extends GenericEntity implements Serializable {
 	private Double valor;
 
 	@ManyToOne
-	@JoinColumn(name = "id_tipo_despesa")
+	@JoinColumn(name = "id_tipo_despesa", nullable = true)
 	private TipoDespesa tipoDespesa;
 
 	@ManyToOne

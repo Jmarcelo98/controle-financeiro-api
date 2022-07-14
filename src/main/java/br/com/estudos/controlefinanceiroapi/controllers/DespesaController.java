@@ -3,6 +3,7 @@ package br.com.estudos.controlefinanceiroapi.controllers;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,6 +22,11 @@ public class DespesaController {
 
 	private final DespesaService despesaService;
 
+	@GetMapping
+	ResponseEntity<List<DespesaDTO>> buscarTodosPeloIdUsuario(Integer idUsuario) {
+		return ResponseEntity.ok(despesaService.buscarTodosPeloIdUsuario(idUsuario));
+	}
+
 	@PostMapping
 	public ResponseEntity<Void> incluir(@RequestBody DespesaDTO despesaDTO) {
 		despesaService.incluir(despesaDTO);
@@ -33,8 +39,9 @@ public class DespesaController {
 		return ResponseEntity.ok().build();
 	}
 
-	@GetMapping
-	ResponseEntity<List<DespesaDTO>> buscarTodosPeloIdUsuario(Integer idUsuario) {
-		return ResponseEntity.ok(despesaService.buscarTodosPeloIdUsuario(idUsuario));
+	@DeleteMapping
+	ResponseEntity<Void> deletar(Integer id) {
+		despesaService.deletar(id);
+		return ResponseEntity.ok().build();
 	}
 }

@@ -2,6 +2,8 @@ package br.com.estudos.controlefinanceiroapi.services;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
@@ -19,11 +21,13 @@ public class DespesaService {
 
 	private final UsuarioService usuarioService;
 
+	@Transactional
 	public void incluir(DespesaDTO despesaDTO) {
 		var despesa = DespesaMapper.INSTANCE.DTOToEntity(despesaDTO);
 		despesaRepository.save(despesa);
 	}
 
+	@Transactional
 	public void atualizar(DespesaDTO despesaDTO) {
 
 		var despesa = despesaRepository.findById(despesaDTO.getId())
@@ -32,6 +36,11 @@ public class DespesaService {
 		BeanUtils.copyProperties(despesaDTO, despesa);
 		despesaRepository.save(despesa);
 
+	}
+
+	@Transactional
+	public void deletar(Integer id) {
+		despesaRepository.deleteById(id);
 	}
 
 	public List<DespesaDTO> buscarTodosPeloIdUsuario(Integer id) {
