@@ -1,5 +1,7 @@
 package br.com.estudos.controlefinanceiroapi.services;
 
+import javax.transaction.Transactional;
+
 import org.springframework.stereotype.Service;
 
 import br.com.estudos.controlefinanceiroapi.handlers.RecursoNaoEncontradoException;
@@ -12,6 +14,11 @@ import lombok.RequiredArgsConstructor;
 public class UsuarioService {
 
 	private final UsuarioRepository usuarioRepository;
+
+	@Transactional
+	public void deletar(Integer id) {
+		usuarioRepository.deleteById(id);
+	}
 
 	public Usuario buscarPeloId(Integer id) {
 		return usuarioRepository.findById(id)

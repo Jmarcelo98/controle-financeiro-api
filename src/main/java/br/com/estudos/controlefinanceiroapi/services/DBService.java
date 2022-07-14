@@ -36,12 +36,12 @@ public class DBService {
 
 		LocalDate date1 = LocalDate.of(1998, Month.NOVEMBER, 16);
 
-		var usuario1 = Usuario.builder().id(null).nomeCompleto("JOÃO MARCELO DE JESUS MACEDO").cpf("05455329146")
+		var usuario1 = Usuario.builder().id(null).foto(null).nomeCompleto("JOÃO MARCELO DE JESUS MACEDO").cpf("05455329146")
 				.dtNascimento(date1).build();
 
 		LocalDate date2 = LocalDate.of(1999, Month.SEPTEMBER, 26);
 
-		var usuario2 = Usuario.builder().id(null).nomeCompleto("MARCOS GIOVANNY 22CM").cpf("01234567890")
+		var usuario2 = Usuario.builder().id(null).foto(null).nomeCompleto("MARCOS GIOVANNY 22CM").cpf("01234567890")
 				.dtNascimento(date2).build();
 
 		usuarioRepository.saveAll(Arrays.asList(usuario1, usuario2));
