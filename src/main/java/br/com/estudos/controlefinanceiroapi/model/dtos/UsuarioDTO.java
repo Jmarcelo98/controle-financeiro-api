@@ -2,6 +2,8 @@ package br.com.estudos.controlefinanceiroapi.model.dtos;
 
 import java.time.LocalDate;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -18,6 +20,7 @@ public class UsuarioDTO {
 	private Integer id;
 	private String nomeCompleto;
 	private String cpf;
+	private byte[] foto;
 	private LocalDate dtNascimento;
 
 }
