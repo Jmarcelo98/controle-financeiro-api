@@ -9,6 +9,7 @@ import br.com.estudos.controlefinanceiroapi.handlers.NegocioException;
 import br.com.estudos.controlefinanceiroapi.handlers.RecursoNaoEncontradoException;
 import br.com.estudos.controlefinanceiroapi.mappers.generic.TipoReceitaMapper;
 import br.com.estudos.controlefinanceiroapi.model.dtos.TipoReceitaDTO;
+import br.com.estudos.controlefinanceiroapi.model.entity.Receita;
 import br.com.estudos.controlefinanceiroapi.model.entity.TipoReceita;
 import br.com.estudos.controlefinanceiroapi.repositories.TipoReceitaRepository;
 import lombok.RequiredArgsConstructor;
@@ -42,6 +43,20 @@ public class TipoReceitaService {
 		tipoReceitaRepository.save(tipoReceita);
 		
 	}
+	
+	public void delete (Integer id) {
+  		var tipoReceita = tipoReceitaRepository.findById(id)
+  				.orElseThrow(() -> new RecursoNaoEncontradoException("Tipo Receita nao encontrado pelo Id"));
+  		
+  		for(Receita receita : tipoReceita.getReceitas()) {
+  			receita.setTipoReceita(null);  			
+  		}
+  		
+  		tipoReceitaRepository.deleteById(id);
+		
+	}
+	
+	
 
 	// private metodos
 
